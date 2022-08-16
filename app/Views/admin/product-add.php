@@ -1,4 +1,4 @@
-<?= $this->extend('mazer/layouts/app') ?>
+<?= $this->extend('admin/layouts/app') ?>
 
 <?= $this->section('content') ?>
 <div class="page-heading">

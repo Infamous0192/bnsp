@@ -53,6 +53,13 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function ($rou
         $routes->post('put', 'Product::put');
         $routes->get('delete', 'Product::delete');
     });
+
+    $routes->group('transaction', function ($routes) {
+        $routes->get('/', 'Transaction::index');
+        $routes->get('(:num)', 'Transaction::detail/$1');
+        $routes->get('(:num)/bayar', 'Transaction::bayar/$1');
+        $routes->get('checkout', 'Transaction::checkout');
+    }); 
 });
 
 $routes->group('user', ['namespace' => 'App\Controllers\User'], function ($routes) {
@@ -73,6 +80,13 @@ $routes->group('user', ['namespace' => 'App\Controllers\User'], function ($route
         $routes->get('add/(:num)', 'Cart::add/$1');
         $routes->get('remove/(:num)', 'Cart::remove/$1');
     });
+
+    $routes->group('transaction', function ($routes) {
+        $routes->get('/', 'Transaction::index');
+        $routes->get('(:num)', 'Transaction::detail/$1');
+        $routes->get('(:num)/bayar', 'Transaction::bayar/$1');
+        $routes->get('checkout', 'Transaction::checkout');
+    }); 
 });
 
 $routes->group('mazer', ['namespace' => 'App\Controllers\Mazer'], function ($routes) {

@@ -68,6 +68,13 @@ class Auth extends BaseController
         'username' => $user['username'],
         'role' => $user['role']
       ]);
+
+      if ($user['role'] == 'admin') {
+        dd('test');
+        return redirect()->to('/admin');
+      }
+
+      return redirect()->to('/user');
     }
   }
 

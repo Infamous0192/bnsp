@@ -10,6 +10,10 @@
       <h1 class="auth-title">Sign Up</h1>
       <p class="auth-subtitle mb-5">Input your data to register to our website.</p>
 
+      <?php if (session()->getFlashData('pesan')) : ?>
+        <div class="alert alert-danger" role="alert"><?= session()->getFlashData('pesan') ?></div>
+      <?php endif; ?>
+
       <form action="/register" method="post">
         <div class="form-group position-relative has-icon-left mb-4">
           <input name="name" type="text" class="form-control form-control-xl <?= ($validation->hasError('name')) ? 'is-invalid' : '' ?>" value="<?= old('name') ?>" placeholder="Name">

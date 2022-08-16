@@ -1,18 +1,18 @@
-<?= $this->extend('user/layouts/app') ?>
+<?= $this->extend('admin/layouts/app') ?>
 
 <?= $this->section('content') ?>
 <div class="page-heading">
   <div class="page-title">
     <div class="row">
       <div class="col-12 col-md-6 order-md-1 order-last">
-        <h3>Carts</h3>
-        <p class="text-subtitle text-muted">Your carts</p>
+        <h3>Transactions</h3>
+        <p class="text-subtitle text-muted">All transactions.</p>
       </div>
       <div class="col-12 col-md-6 order-md-2 order-first">
         <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/user">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Carts</li>
+            <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Products</li>
           </ol>
         </nav>
       </div>
@@ -26,35 +26,29 @@
   <section class="section">
     <div class="card">
       <div class="card-header d-flex align-items-center justify-content-between">
-        <h4>Carts</h4>
+        <h4>Transactions</h4>
       </div>
       <div class="card-body">
         <table class="table table-striped" id="table1">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Thumbnail</th>
+              <th>ID Transaksi</th>
+              <th>Nama User</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($products as $product) : ?>
+            <?php foreach ($transactions as $transaction) : ?>
               <tr>
-                <td><?= $product['id_product'] ?></td>
-                <td><?= $product['title'] ?></td>
-                <td><?= $product['description'] ?></td>
-                <td><?= $product['price'] ?></td>
+                <td><?= $transaction['id'] ?></td>
+                <td><?= $transaction['name'] ?></td>
+                <td><?= $transaction['status'] ?></td>
                 <td>
-                  <img src="/files/product/<?= $product['thumbnail'] ?>" width="200" class="img-thumbnail" alt="product">
-                </td>
-                <td>
-                  <a href="/user/cart/remove/<?= $product['id'] ?>">
-                    <button class="btn btn-sm btn-danger d-flex align-items-center">
-                      <i class="bi bi-cart-fill"></i>
-                      Hapus
+                  <a href="/admin/transaction/<?= $transaction['id'] ?>">
+                    <button class="btn btn-sm btn-primary d-flex align-items-center">
+                      <i class="bi bi-eye-fill"></i>
+                      Detail
                     </button>
                   </a>
                 </td>
@@ -62,14 +56,6 @@
             <?php endforeach; ?>
           </tbody>
         </table>
-
-        <div class="col-12 d-flex justify-content-end">
-          <a href="/user/transaction/checkout">
-            <button class="btn btn-primary px-4">
-              Checkout
-            </button>
-          </a>
-        </div>
       </div>
     </div>
 

@@ -20,6 +20,7 @@ class Transaction extends Migration
                 'constraint' => '100',
             ],
             'status' => [
+                'type'       => 'ENUM',
                 'constraint' => ['pending', 'terbayar', 'selesai'],
                 'default'    => 'pending',
             ],

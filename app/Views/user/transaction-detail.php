@@ -5,14 +5,14 @@
   <div class="page-title">
     <div class="row">
       <div class="col-12 col-md-6 order-md-1 order-last">
-        <h3>Carts</h3>
-        <p class="text-subtitle text-muted">Your carts</p>
+        <h3>Transaction</h3>
+        <p class="text-subtitle text-muted">Transaction Detail.</p>
       </div>
       <div class="col-12 col-md-6 order-md-2 order-first">
         <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/user">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Carts</li>
+            <li class="breadcrumb-item active" aria-current="page">Transaction</li>
           </ol>
         </nav>
       </div>
@@ -25,51 +25,46 @@
 
   <section class="section">
     <div class="card">
-      <div class="card-header d-flex align-items-center justify-content-between">
-        <h4>Carts</h4>
+      <div class="card-header">
+        <h4>Transaction (#<?= $transaction['id'] ?>)</h4>
+        <h5>
+            Status: <?= $transaction['status'] ?>
+        </h5>
       </div>
       <div class="card-body">
         <table class="table table-striped" id="table1">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Description</th>
+              <th>ID Product</th>
+              <th>Product</th>
+              <th>Descrition</th>
               <th>Price</th>
               <th>Thumbnail</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             <?php foreach ($products as $product) : ?>
               <tr>
-                <td><?= $product['id_product'] ?></td>
+                <td><?= $product['id'] ?></td>
                 <td><?= $product['title'] ?></td>
                 <td><?= $product['description'] ?></td>
                 <td><?= $product['price'] ?></td>
                 <td>
                   <img src="/files/product/<?= $product['thumbnail'] ?>" width="200" class="img-thumbnail" alt="product">
                 </td>
-                <td>
-                  <a href="/user/cart/remove/<?= $product['id'] ?>">
-                    <button class="btn btn-sm btn-danger d-flex align-items-center">
-                      <i class="bi bi-cart-fill"></i>
-                      Hapus
-                    </button>
-                  </a>
-                </td>
               </tr>
             <?php endforeach; ?>
           </tbody>
         </table>
-
-        <div class="col-12 d-flex justify-content-end">
-          <a href="/user/transaction/checkout">
-            <button class="btn btn-primary px-4">
-              Checkout
-            </button>
-          </a>
-        </div>
+        <?php if ($transaction['status'] == 'pending') : ?>
+            <div class="d-flex justify-content-between">
+                <a href="/user/transaction/<?= $transaction['id'] ?>/bayar">
+                    <button class="btn btn-primary px-4">
+                        Bayar
+                    </button>
+                </a>
+            </div>
+        <?php endif; ?>
       </div>
     </div>
 

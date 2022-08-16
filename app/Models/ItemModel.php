@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class ItemModel extends Model
 {
-  protected $table            = 'carts';
+  protected $table            = 'items';
   protected $primaryKey       = 'id';
   protected $useAutoIncrement = true;
   protected $protectFields    = true;

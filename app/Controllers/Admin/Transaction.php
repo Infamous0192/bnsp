@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\User;
+namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\CartModel;
@@ -22,9 +22,9 @@ class Transaction extends BaseController
 
   public function index()
   {
-    return view('user/transaction', [
+    return view('admin/transaction', [
       'title'        => 'Transactions',
-      'transactions' => $this->transaction->findByUser(session()->get('id'))
+      'transactions' => $this->transaction->join('users', 'transactions.id_user=users.id')->select('transactions.id, users.name, transactions.status')->findAll()
     ]);
   }
 
